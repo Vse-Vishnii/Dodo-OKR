@@ -182,3 +182,5 @@ C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\bin\Debug\net5.0-windows\runtime
 C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\bin\Debug\net5.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\obj\Debug\net5.0-windows\DodOKR.csproj.ResolveComReference.cache

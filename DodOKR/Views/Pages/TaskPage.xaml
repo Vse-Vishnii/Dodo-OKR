@@ -64,7 +64,7 @@
                         </Button.Template>
                     </Button>
                     <Separator Opacity="0" Height="250"/>
-                    <Button>
+                    <Button Command="{Binding LoadExcel}">
                         <Button.Template>
                             <ControlTemplate>
                                 <Border Style="{StaticResource EdgeStyle}"/>

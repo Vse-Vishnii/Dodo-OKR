@@ -111,6 +111,11 @@ namespace DodOKR
             element.IsVisibleChanged += UpdatePageMask;
         });
 
+        public ICommand LoadExcel => new RelayCommand(obj =>
+        {
+            ExcelLoader.Load(currentTeam);
+        });
+
         public void AddNewTask(Objective obj)
         {
             var objective = this.Objectives[obj.Index];
