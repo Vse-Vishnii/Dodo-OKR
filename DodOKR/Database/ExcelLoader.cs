@@ -21,7 +21,6 @@ namespace DodOKR
                 FillTeamObjectives(team, sheet, db);
             }
 
-            
             app.Visible = true;
             app.UserControl = true;
         }
@@ -42,6 +41,8 @@ namespace DodOKR
                     i = FillTasks(sheet, i, 2, task);
                 }
             }
+
+            sheet.Columns.AutoFit();
         }
 
         private static int FillTasks(Worksheet sheet, int i, int j, Task task)
