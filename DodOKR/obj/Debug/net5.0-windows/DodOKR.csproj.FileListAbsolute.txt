@@ -50,7 +50,6 @@ C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\obj\Debug\net5.0-windows\DodOKR.
 C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\obj\Debug\net5.0-windows\Buttons.baml
 C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\obj\Debug\net5.0-windows\Styles\EdgeButtons.baml
 C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\obj\Debug\net5.0-windows\Styles\JoinStyles.baml
-C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\obj\Debug\net5.0-windows\Styles\PriorityStyle.baml
 C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\obj\Debug\net5.0-windows\Styles\ProgressBarStyle.baml
 C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\obj\Debug\net5.0-windows\MainWindow.g.cs
 C:\Documents\Programming\C#\WPF\Dodo-OKR\DodOKR\obj\Debug\net5.0-windows\Views\Controls\GlobalTree.g.cs

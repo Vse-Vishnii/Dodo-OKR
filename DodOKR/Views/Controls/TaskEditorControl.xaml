@@ -6,106 +6,79 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280"
              Visibility="{Binding Path=Visibility,UpdateSourceTrigger=PropertyChanged}">
-    <Grid Background="Transparent">
-        <Border Width="580" Height="680" Background="#fef0e5" CornerRadius="20" HorizontalAlignment="Right" BorderThickness="0">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="#7f000000">
+        <Border Width="640" Height="720" Background="White" CornerRadius="0" HorizontalAlignment="Left" Margin="640,0,0,0">
             <Border.Resources>
                 <Style TargetType="Border">
                     <Setter Property="Background" Value="White"/>
                     <Setter Property="BorderBrush" Value="Black"/>
                     <Setter Property="BorderThickness" Value="0.5"/>
                     <Setter Property="CornerRadius" Value="10"/>
-                    <Setter Property="Width" Value="500"/>
+                    <Setter Property="Width" Value="600"/>
                 </Style>
             </Border.Resources>
             <StackPanel>
-                <TextBlock Text="Редактирование" Style="{StaticResource HeaderText}" HorizontalAlignment="Center"
-                           FontSize="30" Margin="10"/>
-                <Separator Height="100" Visibility="Hidden"/>
-                <Border Height="100">
+                <TextBlock Text="Редактирование" Style="{StaticResource HeaderText}" HorizontalAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Normal" Margin="0,20,0,10"/>
+                <Border Height="80" CornerRadius="0" Background="White" BorderBrush="#FF646464">
                     <StackPanel>
-                        <TextBox Text="{Binding Task.Name}" Style="{StaticResource BodyTextBox}" Margin="5"/>
-                        <TextBox Text="{Binding Task.Comment}" Style="{StaticResource BodyTextBox}" 
-                                 Foreground="#9b9da2" Margin="5"/>
+                        <TextBox Text="{Binding Task.Name}" Padding="5,5,5,5" FontSize="14" FontFamily="Segoe UI Light" VerticalContentAlignment="Center"/>
+                        <TextBox Text="{Binding Task.Comment}" Padding="5,5,5,5" FontFamily="Segoe UI Light" FontSize="14" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
                     </StackPanel>
                 </Border>
                 <Separator Height="20" Visibility="Hidden"/>
-                <Border Height="80">
+                <Border CornerRadius="0" BorderBrush="White">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Цель: " Style="{StaticResource BodyText}" Margin="5"/>
-                            <TextBox Text="{Binding Task.Target}" Style="{StaticResource BodyTextBox}"/>
+                            <TextBlock Text="Цель: " Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                            <TextBox Text="{Binding Task.Target}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="На текущий момент: " Margin="5" Style="{StaticResource BodyText}"/>
-                            <TextBox Text="{Binding Task.Current}" Style="{StaticResource BodyTextBox}"/>
+                            <TextBlock Text="На текущий момент: " Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                            <TextBox Text="{Binding Task.Current}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Прогресс: " Margin="5" Style="{StaticResource BodyText}"/>
-                            <ProgressBar Value="{Binding Task.Progress}" Width="80"/>
-                            <TextBlock Text="{Binding Task.Progress}" Style="{StaticResource BodyText}"/>
-                            <TextBlock Text="%" Style="{StaticResource BodyText}"/>
+                            <TextBlock Text="Прогресс: " Margin="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                            <ProgressBar Value="{Binding Task.Progress}" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Light" FontSize="14"/>
+                            <TextBlock Text="{Binding Task.Progress}" FontSize="14" FontFamily="Segoe UI Light" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text=" %" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
                 <Separator Height="20" Visibility="Hidden"/>
-                <Border>
+                <Border CornerRadius="0" BorderBrush="White">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Сроки: " Style="{StaticResource BodyText}" Margin="5"/>
-                        <DatePicker SelectedDate="{Binding Task.StartDate}"/>
-                        <TextBlock Text=" - " Style="{StaticResource BodyText}"/>
-                        <DatePicker SelectedDate="{Binding Task.FinishDate}"/>
+                        <TextBlock Text="Сроки: " HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,5,5,5" FontSize="14"/>
+                        <DatePicker SelectedDate="{Binding Task.StartDate}" Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
+                        <TextBlock Text=" – " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
+                        <DatePicker SelectedDate="{Binding Task.FinishDate}" Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
                     </StackPanel>
                 </Border>
                 <Separator Height="20" Visibility="Hidden"/>
-                <Border>
+                <Border CornerRadius="0" BorderBrush="White">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Приоритет: " Style="{StaticResource BodyText}" Margin="5"/>
-                        <ComboBox>
-                            <ComboBoxItem IsSelected="{Binding IsLowPriority}">
-                                <Border Style="{StaticResource PriorityBorder}" Background="#fed01d">
-                                    <TextBlock Style="{StaticResource PriorityText}" Text="Низкий"/>
-                                </Border>
-                            </ComboBoxItem>
-                            <ComboBoxItem IsSelected="{Binding IsMiddlePriority}">
-                                <Border Style="{StaticResource PriorityBorder}" Background="#ee9016">
-                                    <TextBlock Style="{StaticResource PriorityText}" Text="Средний"/>
-                                </Border>
-                            </ComboBoxItem>
-                            <ComboBoxItem IsSelected="{Binding IsHighPriority}">
-                                <Border Style="{StaticResource PriorityBorder}" Background="#bd3933">
-                                    <TextBlock Style="{StaticResource PriorityText}" Text="Высокий"/>
-                                </Border>
-                            </ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-                </Border>
-                <Separator Height="20" Visibility="Hidden"/>
-                <Border>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Статус: " Style="{StaticResource BodyText}" Margin="5"/>
+                        <TextBlock Text="Статус: " Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
                         <Ellipse x:Name="ellipse" Width="15" Height="15" Fill="{Binding Task.StatusColor}" 
                                 StrokeThickness="0.5" 
-                                Stroke="Black"/>
+                                Stroke="Black" Margin="5,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Separator Visibility="Hidden" Width="5"/>
-                        <TextBlock Text="{Binding Task.StatusStr}" Style="{StaticResource BodyText}"/>
+                        <TextBlock Text="{Binding Task.StatusStr}" FontSize="14" FontFamily="Segoe UI Light" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Border>
                 <Separator Height="20" Visibility="Hidden"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Width="150" Command="{Binding CloseControl}" Grid.Column="0" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Cursor="Hand" Content="Назад" Command="{Binding CloseControl}" Margin="5,0,5,0" Width="100">
                         <Button.Template>
                             <ControlTemplate>
-                                <Border CornerRadius="10" Height="30">
-                                    <TextBlock Text="Назад" Style="{StaticResource ButtonText}" Foreground="Gray"
-                                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Border CornerRadius="5" Height="30" Background="White" BorderBrush="#FF646464" BorderThickness="2">
                                     <Border.Style>
                                         <Style TargetType="Border">
-                                            <Setter Property="Background" Value="#c8c8c8"/>
+                                            <Setter Property="Background" Value="White"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
                                                     <Setter Property="Background" Value="#cfcfcf"/>
@@ -113,39 +86,37 @@
                                             </Style.Triggers>
                                         </Style>
                                     </Border.Style>
+                                    <TextBlock Text="Назад" Style="{StaticResource ButtonText}" Foreground="#FF666666" FontFamily="Segoe UI Semibold"/>
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button Width="150" Command="{Binding Delete}" Grid.Column="1" HorizontalAlignment="Center">
+                    <Button Cursor="Hand" Content="Удалить" Command="{Binding DeleteTask}" Margin="5,0,5,0" Width="100" Background="#FFD3BDBD">
                         <Button.Template>
                             <ControlTemplate>
-                                <Border CornerRadius="10" Height="30">
-                                    <TextBlock Text="Удалить" Style="{StaticResource ButtonText}" Foreground="Gray"
-                                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Border Height="30" CornerRadius="5">
                                     <Border.Style>
-                                        <Style TargetType="Border">
-                                            <Setter Property="Background" Value="#c8c8c8"/>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="Background" Value="Red"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="#cfcfcf"/>
+                                                    <Setter Property="Background" Value="#FFFF6565"/>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Border.Style>
+                                    <TextBlock Text="Удалить" Style="{StaticResource ButtonText}" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button Width="150" Command="{Binding Edit}" Grid.Column="2" HorizontalAlignment="Center">
+                    <Button Cursor="Hand" Content="Сохранить" Command="{Binding EditTask}" Margin="5,0,5,0" Width="105">
                         <Button.Template>
                             <ControlTemplate>
-                                <Border CornerRadius="10" Height="30">
-                                    <TextBlock Text="Сохранить" Style="{StaticResource ButtonText}"
-                                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Border Height="30" CornerRadius="5">
                                     <Border.Style>
-                                        <Style TargetType="Border">
-                                            <Setter Property="Background" Value="#ff6900"/>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="Background" Value="#FFFF6900"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
                                                     <Setter Property="Background" Value="Orange"/>
@@ -153,11 +124,12 @@
                                             </Style.Triggers>
                                         </Style>
                                     </Border.Style>
+                                    <TextBlock Text="Сохранить" Style="{StaticResource ButtonText}" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                </Grid>
+                </StackPanel>
             </StackPanel>
         </Border>
     </Grid>    
