@@ -1,5 +1,4 @@
-﻿using DodOKR.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -11,7 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace DodOKR.ViewModels
+namespace DodOKR
 {
     public class GlobalTreeViewModel : ViewModel
     {
@@ -48,7 +47,7 @@ namespace DodOKR.ViewModels
             this.grid = grid;
             this.tree = tree;
             this.tree.PreviewKeyDown += delegate (object obj, KeyEventArgs args) { args.Handled = true; };
-            this.PopulateTreeView();
+            this.CreateTreeView();
         }
 
         public ICommand ShowTaskMenu => new RelayCommand(obj =>
@@ -58,18 +57,19 @@ namespace DodOKR.ViewModels
             taskMenu.IsVisibleChanged += CloseTaskMenu;
         });
 
-        public ICommand TurnPersonal => new RelayCommand(obj => Turn(Data.PageType.Personal));
-        public ICommand TurnTeam => new RelayCommand(obj => Turn(Data.PageType.Team));
-        public ICommand TurnCompany => new RelayCommand(obj => Turn(Data.PageType.Company));
+        //Сделать общий переключатель
+        public ICommand TurnPersonal => new RelayCommand(obj => Turn(PageType.Personal));
+        public ICommand TurnTeam => new RelayCommand(obj => Turn(PageType.Team));
 
-        private void Turn(Data.PageType type)
+        private void Turn(PageType type)
         {
+            Visibility = Visibility.Hidden;
             if (tvm.Type != type)
             {
-                tvm.Type = type;
-                Visibility = Visibility.Hidden;
+                tvm.Type = type;             
             }                
         }
+        //
 
         private void CloseTaskMenu(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -77,54 +77,41 @@ namespace DodOKR.ViewModels
                 Visibility = Visibility.Hidden;
         }
 
-        private void PopulateTreeView()
+        private void CreateTreeView()
         {
-            var root = new Node("Цель Команды");
+            var companyTarget = new Node("Цель Компании");
+            List<Project> projects;
+            using (ApplicationContext db=new ApplicationContext(Connector.Options))
+                projects = db.LoadTreeData();
+            PopulateTree(companyTarget, projects);
 
+            Node dummy = FillProgress(companyTarget, projects);
 
-            var rand = new Random();
-            var projectCount = rand.Next(5)+1;
-            var projects = new List<Project>();
-            for(var k = 0; k < projectCount; k++)
+            this.tree.ItemsSource = dummy.ChildNodes;
+        }
+
+        private static void PopulateTree(Node companyTarget, List<Project> projects)
+        {
+            foreach (var project in projects)
             {
-                var project = new Project() { Name = "Project "+(k+1), Head = new User() { FirstName = "Name", SurName = "SurName" } };
-                var teamCount = rand.Next(5)+1;
-                var teams = new List<Team>();
-                for (var j = 0; j < teamCount; j++)
+                companyTarget.ChildNodes.Add(new Node(project));
+                var root = companyTarget.ChildNodes[companyTarget.ChildNodes.Count - 1];
+                foreach (var task in project.Teams)
                 {
-                    var team = new Team() { Name = "Team " + (k + 1)+"."+(j+1) };
-                    var size = rand.Next(5)+1;
-                    var objs = new ObservableCollection<ObjectiveMask>();
-                    for (var i = 0; i < size; i++)
-                    {
-                        var obj = new Data.Task() { Progress = rand.Next(100) };
-                        objs.Add(new ObjectiveMask() { Obj = new[] { obj } });
-                    }
-                    team.Objectives = objs;
-                    teams.Add(team);
-                }
-                project.Teams = teams;
-                projects.Add(project);
-            }
-            
-            foreach(var proj in projects)
-            {
-                root.ChildNodes.Add(new Node(proj));
-                var r = root.ChildNodes[root.ChildNodes.Count - 1];
-                foreach(var t in proj.Teams)
-                {
-                    r.ChildNodes.Add(new Node(t));
+                    root.ChildNodes.Add(new Node(task));
                 }
             }
+        }
 
+        private Node FillProgress(Node companyTarget, List<Project> projects)
+        {
             Node dummy = new Node();
-            dummy.ChildNodes.Add(root);
+            dummy.ChildNodes.Add(companyTarget);
             Progress = 0;
             foreach (var e in projects)
                 Progress += e.Progress;
             Progress /= projects.Count;
-
-            this.tree.ItemsSource = dummy.ChildNodes;
-        }
+            return dummy;
+        }        
     }
 }

@@ -22,6 +22,8 @@ namespace DodOKR
     {
         public MainWindow()
         {
+            Connector.Connect();
+            DefaultDb.ResetDb();
             InitializeComponent();
             MainFrame.Content = new JoinPage();
         }

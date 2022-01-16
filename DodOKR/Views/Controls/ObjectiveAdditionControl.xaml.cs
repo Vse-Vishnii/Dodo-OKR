@@ -14,8 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Caliburn.Micro;
-using DodOKR.Data;
-using DodOKR.ViewModels;
 
 namespace DodOKR
 {
@@ -24,10 +22,10 @@ namespace DodOKR
     /// </summary>
     public partial class ObjectiveAdditionControl : UserControl
     {
-        public ObjectiveAdditionControl(ObservableCollection<ObjectiveMask> objectives)
+        public ObjectiveAdditionControl(ObservableCollection<ObjectiveMask> objectives, DbEntity entity)
         {
             InitializeComponent();
-            DataContext = new ObjectiveAdditionVM(objectives);
+            DataContext = new ObjectiveAdditionVM(objectives, entity);
         }
     }
 }
