@@ -91,7 +91,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button Cursor="Hand" Content="Удалить" Command="{Binding DeleteTask}" Margin="5,0,5,0" Width="100" Background="#FFD3BDBD">
+                    <Button Cursor="Hand" Content="Удалить" Command="{Binding Delete}" Margin="5,0,5,0" Width="100" Background="#FFD3BDBD">
                         <Button.Template>
                             <ControlTemplate>
                                 <Border Height="30" CornerRadius="5">
@@ -110,7 +110,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button Cursor="Hand" Content="Сохранить" Command="{Binding EditTask}" Margin="5,0,5,0" Width="105">
+                    <Button Cursor="Hand" Content="Сохранить" Command="{Binding Edit}" Margin="5,0,5,0" Width="105">
                         <Button.Template>
                             <ControlTemplate>
                                 <Border Height="30" CornerRadius="5">

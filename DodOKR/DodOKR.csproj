@@ -21,6 +21,7 @@
     <None Remove="Views\Pages\Images\Avatar.png" />
     <None Remove="Views\Pages\Images\Company.png" />
     <None Remove="Views\Pages\Images\Exit.png" />
+    <None Remove="Views\Pages\Images\Message.png" />
     <None Remove="Views\Pages\Images\Personal.png" />
     <None Remove="Views\Pages\Images\Tasks.png" />
     <None Remove="Views\Pages\Images\Team.png" />
@@ -81,6 +82,7 @@
     <Resource Include="Views\Pages\Images\Exit.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Views\Pages\Images\Message.png" />
     <Resource Include="Views\Pages\Images\Personal.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

@@ -70,7 +70,17 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Separator Opacity="0" Height="280"/>
+                    <Separator Opacity="0" Height="20"/>
+                    <Button >
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Border Style="{StaticResource EdgeStyle}" CornerRadius="5,5,5,5" BorderBrush="#FFFFDCC1" BorderThickness="1">
+                                    <Image Source="Images/Message.png" Stretch="Uniform"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Separator Opacity="0" Height="225"/>
                     <Button Command="{Binding LoadExcel}">
                         <Button.Template>
                             <ControlTemplate>
@@ -117,6 +127,30 @@
                             <ControlTemplate>
                                 <Border Width="160" HorizontalAlignment="Left" Height="30" CornerRadius="5">
                                     <Label Content="Добавить цель" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           FontFamily="Segoe UI Semibold"/>
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Background" Value="#ff6900"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="Orange"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Cursor="Hand" Margin="180,0,0,0">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Border Width="160" HorizontalAlignment="Left" Height="30" CornerRadius="5">
+                                    <Label Content="Участники команды" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center"
                                            Foreground="White"
