@@ -91,7 +91,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Width="170" Command="{Binding AddTask}" Grid.Column="1" HorizontalAlignment="Center" Cursor="Hand">
+                        <Button Width="170" Command="{Binding Add}" Grid.Column="1" HorizontalAlignment="Center" Cursor="Hand">
                             <Button.Template>
                                 <ControlTemplate>
                                     <Border CornerRadius="10" Height="30">

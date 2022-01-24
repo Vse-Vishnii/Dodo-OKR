@@ -35,11 +35,11 @@ namespace DodOKR
 
         protected override void Create()
         {
-            if (!DataChanger.CheckTaskField(name, comment, current, target, startDate, finishDate))
+            if (!DataChanger.CheckTaskField(name, comment, target, current, startDate, finishDate))
                 return;
             Task = new Task(name, comment,
                 startDate, finishDate,
-                int.Parse(current), int.Parse(current),
+                int.Parse(current), int.Parse(target),
                 mask.Tasks.Count, mask.Objective.Id);
             Task.Progress = (int)(double.Parse(current) / double.Parse(target) * 100);
             Task.Status = DataChanger.SetStatus(startDate, finishDate, Task.Progress);

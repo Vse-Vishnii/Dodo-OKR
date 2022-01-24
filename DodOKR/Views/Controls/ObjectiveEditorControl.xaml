@@ -27,8 +27,8 @@
                 <TextBlock Text="Редактирование" Style="{StaticResource HeaderText}" HorizontalAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Normal" Margin="0,20,0,10"/>
                 <Border Height="80" CornerRadius="0" Background="White" BorderBrush="#FF646464">
                     <StackPanel>
-                        <TextBox Text="{Binding Task.Name}" Padding="5,5,5,5" FontSize="14" FontFamily="Segoe UI Light" VerticalContentAlignment="Center"/>
-                        <TextBox Text="{Binding Task.Comment}" Padding="5,5,5,5" FontFamily="Segoe UI Light" FontSize="14" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                        <TextBox Text="{Binding Mask.Objective.Name}" Padding="5,5,5,5" FontSize="14" FontFamily="Segoe UI Light" VerticalContentAlignment="Center"/>
+                        <TextBox Text="{Binding Mask.Objective.Comment}" Padding="5,5,5,5" FontFamily="Segoe UI Light" FontSize="14" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
                     </StackPanel>
                 </Border>
                 <Separator Height="20" Visibility="Hidden"/>
@@ -36,16 +36,16 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Цель: " Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
-                            <TextBox Text="{Binding Task.Target}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox Text="{Binding Mask.Objective.Target}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="На текущий момент: " Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
-                            <TextBox Text="{Binding Task.Current}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
+                            <TextBox Text="{Binding Mask.Objective.Current}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Прогресс: " Margin="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
-                            <ProgressBar Value="{Binding Task.Progress}" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Light" FontSize="14"/>
-                            <TextBlock Text="{Binding Task.Progress}" FontSize="14" FontFamily="Segoe UI Light" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ProgressBar Value="{Binding Mask.Objective.Progress}" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Light" FontSize="14"/>
+                            <TextBlock Text="{Binding Mask.Objective.Progress}" FontSize="14" FontFamily="Segoe UI Light" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock Text=" %" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
                         </StackPanel>
                     </StackPanel>
@@ -54,20 +54,20 @@
                 <Border CornerRadius="0" BorderBrush="White">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Сроки: " HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,5,5,5" FontSize="14"/>
-                        <DatePicker SelectedDate="{Binding Task.StartDate}" Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
+                        <DatePicker SelectedDate="{Binding Mask.Objective.StartDate}" Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
                         <TextBlock Text=" – " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
-                        <DatePicker SelectedDate="{Binding Task.FinishDate}" Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
+                        <DatePicker SelectedDate="{Binding Mask.Objective.FinishDate}" Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light"/>
                     </StackPanel>
                 </Border>
                 <Separator Height="20" Visibility="Hidden"/>
                 <Border CornerRadius="0" BorderBrush="White">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Статус: " Padding="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
-                        <Ellipse x:Name="ellipse" Width="15" Height="15" Fill="{Binding Task.StatusColor}" 
+                        <Ellipse x:Name="ellipse" Width="15" Height="15" Fill="{Binding Mask.Objective.StatusColor}" 
                                 StrokeThickness="0.5" 
                                 Stroke="Black" Margin="5,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Separator Visibility="Hidden" Width="5"/>
-                        <TextBlock Text="{Binding Task.StatusStr}" FontSize="14" FontFamily="Segoe UI Light" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Mask.Objective.StatusStr}" FontSize="14" FontFamily="Segoe UI Light" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Border>
                 <Separator Height="20" Visibility="Hidden"/>
